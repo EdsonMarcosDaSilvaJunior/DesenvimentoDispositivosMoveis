@@ -39,5 +39,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d("ciclo_vida","OnPause");
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
 
+        Log.d("ciclo_vida","OnStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Log.d("ciclo_vida","OnDestroy");
+    }
 }
