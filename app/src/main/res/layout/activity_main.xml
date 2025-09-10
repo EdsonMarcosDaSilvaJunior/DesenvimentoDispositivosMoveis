@@ -5,63 +5,55 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Entre com o Intervalo"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_weight="1"
+        android:text="Calculadora IMC"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/EdPeso"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.028"
+        tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/edMax"
-        android:layout_width="80dp"
+        android:id="@+id/EdPeso"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:inputType="number"
-        android:hint="100"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/edMin"
-        app:layout_constraintTop_toTopOf="@+id/edMin" />
+        android:hint="Peso"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/EdAltura"
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/edMin"
-        android:layout_width="80dp"
+        android:id="@+id/EdAltura"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="372dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:inputType="number"
-        android:hint="0"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/edMax"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:hint="Altura"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/Button"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/Button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sortear"
-        app:layout_constraintBottom_toTopOf="@+id/tvResultado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edMin" />
-
-    <TextView
-        android:id="@+id/tvResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
+        android:layout_marginBottom="132dp"
+        android:layout_weight="1"
+        android:text="Calcular IMC"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        tools:layout_editor_absoluteX="0dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
