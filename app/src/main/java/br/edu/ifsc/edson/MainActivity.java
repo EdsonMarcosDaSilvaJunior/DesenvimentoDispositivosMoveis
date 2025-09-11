@@ -24,21 +24,28 @@ public class MainActivity extends AppCompatActivity {
         buttonA=findViewById(R.id.fragmentoA);
         buttonB=findViewById(R.id.fragmentoB);
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         buttonA.setOnClickListener(v -> {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             if(fragmentA == null){
                 fragmentA = new FragmentA();
             }
-            fragmentTransaction.add(R.id.frameLayout, fragmentA);
+            fragmentTransaction.replace(R.id.frameLayout, fragmentA);
             fragmentTransaction.commit();
         });
 
         buttonB.setOnClickListener(v -> {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
             if(fragmentB == null){
                 fragmentB = new FragmentB();
             }
-            fragmentTransaction.add(R.id.frameLayout, fragmentB);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("msg", "Olá");
+            fragmentB.setArguments(bundle);
+
+            fragmentTransaction.replace(R.id.frameLayout, fragmentB);
             fragmentTransaction.commit();
         });
     }
