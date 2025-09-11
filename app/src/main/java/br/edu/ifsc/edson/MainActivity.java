@@ -11,6 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity {
     FrameLayout frameLayout;
     Button buttonA, buttonB;
+
+
+    FragmentA fragmentA;
+    FragmentB fragmentB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +24,22 @@ public class MainActivity extends AppCompatActivity {
         buttonA=findViewById(R.id.fragmentoA);
         buttonB=findViewById(R.id.fragmentoB);
 
-        FragmentA fragmentA = new FragmentA();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.frameLayout, fragmentA);
-        fragmentTransaction.commit();
+
+        buttonA.setOnClickListener(v -> {
+            if(fragmentA == null){
+                fragmentA = new FragmentA();
+            }
+            fragmentTransaction.add(R.id.frameLayout, fragmentA);
+            fragmentTransaction.commit();
+        });
+
+        buttonB.setOnClickListener(v -> {
+            if(fragmentB == null){
+                fragmentB = new FragmentB();
+            }
+            fragmentTransaction.add(R.id.frameLayout, fragmentB);
+            fragmentTransaction.commit();
+        });
     }
 }
