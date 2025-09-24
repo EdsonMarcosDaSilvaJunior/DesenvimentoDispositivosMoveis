@@ -2,11 +2,16 @@ package br.edu.ifsc.edson;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +51,8 @@ public class FragmentA extends Fragment {
         return fragment;
     }
 
+    Button btConverter;
+    FragmentB fragmentB;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,23 @@ public class FragmentA extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        btConverter.setOnClickListener(v -> {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            if(fragmentB == null){
+                fragmentB = new FragmentB();
+            }
+
+            //edReais = v.findViewById(R.id.edReais);
+            //Bundle bundle = new Bundle();
+            //bundle.putString("reais", edReais.getText().toString());
+            //fragmentB.setArguments(bundle);
+
+            fragmentTransaction.replace(R.id.frameLayout, fragmentB);
+            fragmentTransaction.commit();
+        });
     }
 
     @Override

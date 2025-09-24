@@ -12,24 +12,22 @@ import androidx.fragment.app.Fragment;
 
 public class FragmentB extends Fragment {
 
-    TextView tv;
+    TextView tvReais, tvDolar;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+    private double converteMoeda(String reais){
+        return Double.parseDouble(reais) * 5.33;
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Bundle bundle = getArguments();
-        tv.setText(bundle.getString("msg"));
-    }
+        tvReais.setText(bundle.getString("reais"));
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_b, container, false);
-        tv = v.findViewById(R.id.textView);
-        return v;
+        Double convertido = converteMoeda(bundle.getString("reais"));
+        tvDolar.setText(convertido.toString());
     }
 }
