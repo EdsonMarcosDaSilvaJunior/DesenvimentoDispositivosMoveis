@@ -27,7 +27,7 @@ public class FragmentB extends Fragment {
         Bundle bundle = getArguments();
         tvReais.setText(bundle.getString("reais"));
 
-        Double convertido = converteMoeda(bundle.getString("reais"));
-        tvDolar.setText(convertido.toString());
+        //Double convertido = converteMoeda(bundle.getString("reais"));
+        //tvDolar.setText(convertido.toString());
     }
 }

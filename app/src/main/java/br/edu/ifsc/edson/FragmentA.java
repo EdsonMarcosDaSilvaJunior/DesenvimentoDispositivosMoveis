@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -53,6 +54,7 @@ public class FragmentA extends Fragment {
 
     Button btConverter;
     FragmentB fragmentB;
+    EditText edReais;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,28 +63,34 @@ public class FragmentA extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        btConverter.setOnClickListener(v -> {
 
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-            if(fragmentB == null){
-                fragmentB = new FragmentB();
-            }
-
-            //edReais = v.findViewById(R.id.edReais);
-            //Bundle bundle = new Bundle();
-            //bundle.putString("reais", edReais.getText().toString());
-            //fragmentB.setArguments(bundle);
-
-            fragmentTransaction.replace(R.id.frameLayout, fragmentB);
-            fragmentTransaction.commit();
-        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a, container, false);
+        View v =inflater.inflate(R.layout.fragment_a, container, false);
+
+        btConverter = v.findViewById(R.id.btConverter);
+        btConverter.setOnClickListener(c -> {
+
+            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+
+            if(fragmentB == null){
+              fragmentB = new FragmentB();
+            }
+
+            edReais = c.findViewById(R.id.edReais);
+            Bundle bundle = new Bundle();
+            bundle.putString("reais", edReais.getText().toString());
+            fragmentB.setArguments(bundle);
+
+            fragmentTransaction.replace(R.id.frameLayout, fragmentB);
+            fragmentTransaction.commit();
+        });
+
+
+        return v;
     }
 }
