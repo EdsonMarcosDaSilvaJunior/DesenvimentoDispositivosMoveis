@@ -21,6 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Activity_IMC_Resultado"
+            android:exported="true" />
+        <activity
+            android:name=".Peso_Ideal"
+            android:exported="true"
+            />
     </application>
 
 </manifest>
