@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +48,17 @@ public class MainActivity extends AppCompatActivity {
             editTextNome.setText("");
             adapter.notifyDataSetChanged();
         });
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Toast.makeText(getApplicationContext(),"Elemento Clicado: "+nomes.get(position), Toast.LENGTH_LONG).show();
+        });
+
+        listView.setOnItemLongClickListener((parent, view, position, id) -> {
+            nomes.remove(position);
+            adapter.notifyDataSetChanged();
+            return true;
+        });
+
         listView.setAdapter(adapter);
 
     }
