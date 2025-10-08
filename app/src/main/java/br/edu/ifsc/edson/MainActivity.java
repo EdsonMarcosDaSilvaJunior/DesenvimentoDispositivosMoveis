@@ -30,12 +30,9 @@ public class MainActivity extends AppCompatActivity {
         listView =findViewById(R.id.listView);
         editTextNome = findViewById(R.id.editTextNome);
         button = findViewById(R.id.adicionarNome);
-
         nomes = new ArrayList<>(){{
             add("Edson");
             add("Augusto");
-            add("Jorge");
-            add("Roberto");
         }};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -44,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 android.R.id.text1,
                 nomes
         );
-        listView.setAdapter(adapter);
 
         button.setOnClickListener(v -> {
             nomes.add(editTextNome.getText().toString());
-            listView.setAdapter(adapter);
             editTextNome.setText("");
+            adapter.notifyDataSetChanged();
         });
+        listView.setAdapter(adapter);
 
     }
 }
