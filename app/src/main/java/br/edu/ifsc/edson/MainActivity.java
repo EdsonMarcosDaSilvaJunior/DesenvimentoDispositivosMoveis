@@ -20,44 +20,24 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
-    EditText editTextNome;
     Button button;
     ArrayList<String> nomes;
+    ControllerPlaneta controllerPlaneta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView =findViewById(R.id.listView);
-        editTextNome = findViewById(R.id.editTextNome);
         button = findViewById(R.id.adicionarNome);
-        nomes = new ArrayList<>(){{
-            add("Edson");
-            add("Augusto");
-        }};
+        controllerPlaneta = new ControllerPlaneta();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                nomes
-        );
+        PlanetaAdapter adapter = new PlanetaAdapter(this,R.layout.itemlista, controllerPlaneta.getPlanetas());
 
-        button.setOnClickListener(v -> {
-            nomes.add(editTextNome.getText().toString());
-            editTextNome.setText("");
-            adapter.notifyDataSetChanged();
-        });
 
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Toast.makeText(getApplicationContext(),"Elemento Clicado: "+nomes.get(position), Toast.LENGTH_LONG).show();
-        });
+        button.setOnClickListener(v -> {});
 
-        listView.setOnItemLongClickListener((parent, view, position, id) -> {
-            nomes.remove(position);
-            adapter.notifyDataSetChanged();
-            return true;
-        });
+        listView.setOnItemClickListener((parent, view, position, id) -> {});
 
         listView.setAdapter(adapter);
 
