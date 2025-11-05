@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.BtnSalvar);
         listView = findViewById(R.id.ListName);
 
-        ArrayList<String> usersList = new ArrayList<>();
+        usersList = new ArrayList<>();
 
 
         //path
@@ -69,11 +69,15 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = database.rawQuery("SELECT * FROM users", null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
-            String s = cursor.getString(cursor.getColumnIndex("name"));
+            int columnIndex= cursor.getColumnIndex("texto");
+
+            String s = cursor.getString(columnIndex);
             usersList.add(s);
+            cursor.moveToNext();
         }
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usersList);
+        adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, usersList);
         listView.setAdapter(adapter);
 
     }
