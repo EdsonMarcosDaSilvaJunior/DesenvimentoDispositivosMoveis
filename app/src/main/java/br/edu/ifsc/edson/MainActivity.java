@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 database.insert("users",null,contentValues);
             }
+            carregarUser();
         });
 
         carregarUser();
