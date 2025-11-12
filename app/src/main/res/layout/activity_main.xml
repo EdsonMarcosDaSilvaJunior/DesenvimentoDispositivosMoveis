@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.128" />
 
     <ListView
-        android:id="@+id/ListName"
+        android:id="@+id/ListSku"
         android:layout_width="match_parent"
         android:layout_height="582dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,12 +28,12 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/EditTextSku"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="SKU"
         app:layout_constraintBottom_toTopOf="@+id/BtnSalvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
