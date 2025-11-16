@@ -24,6 +24,15 @@ public class SimplePaint extends View {
 
     ColorDrawable currentColor;
 
+    public enum DrawMode {
+        LINE,
+        RECTANGLE,
+        CIRCLE
+    }
+
+    private DrawMode currentMode = DrawMode.LINE;
+    private float startX, startY,lastX, lastY;
+
     public SimplePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mPaintList = new ArrayList<Paint>();
@@ -50,7 +59,21 @@ public class SimplePaint extends View {
         for (int i = 0; i<mPaintList.size(); i++) {
             canvas.drawPath(mPathList.get(i), mPaintList.get(i));
         }
+
+        if(currentMode == DrawMode.RECTANGLE){
+            canvas.drawRect(startX, startY, lastX, lastY, currentPaint);
+        }else if(currentMode == DrawMode.CIRCLE){
+            float radius = (float) Math.sqrt(Math.pow(lastX-startX,2)+Math.pow(lastY-startY,2));
+            canvas.drawCircle(startX, startY, radius, currentPaint);
+        } else {
+            canvas.drawPath(currentPath,currentPaint);
+        }
+
         //canvas.drawPath(currentPath,currentPaint);
+    }
+
+    public void setDrawMode(DrawMode mode){
+        this.currentMode = mode;
     }
 
     @Override
@@ -61,16 +84,31 @@ public class SimplePaint extends View {
         ly = event.getY();
         switch (event.getAction()){
             case (MotionEvent.ACTION_DOWN):
-                currentPath.moveTo(lx, ly);
-                currentPath.lineTo(lx,ly);
+                startX = lx;
+                startY = ly;
+
+                currentPath = new Path();
+                if(currentMode == DrawMode.LINE){
+                    currentPath.moveTo(lx,ly);
+                }
                 break;
 
             case (MotionEvent.ACTION_MOVE):
-                currentPath.lineTo(lx,ly);
+                if (currentMode == DrawMode.LINE) {
+                    currentPath.lineTo(lx, ly);
+                }
+                lastX = lx;
+                lastY = ly;
                 break;
 
             case (MotionEvent.ACTION_UP):
-                currentPath.lineTo(lx,ly);
+                if(currentMode == DrawMode.RECTANGLE){
+                    currentPath.addRect(startX,startY,lx,ly, Path.Direction.CW);
+                } else if(currentMode == DrawMode.CIRCLE){
+                    float radius = (float) Math.sqrt(Math.pow(lx-startX,2)+Math.pow(ly-startY,2) + Math.pow(ly - startY, 2));
+                    currentPath.addCircle(startX, startY, radius, Path.Direction.CW);
+                }
+
                 mPaintList.add(currentPaint);
                 mPathList.add(currentPath);
 

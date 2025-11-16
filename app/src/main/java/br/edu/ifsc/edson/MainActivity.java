@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     SimplePaint simplePaint;
     ImageView ivColorPicker;
+    Button buttonRectangle, buttonCircle, buttonLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 colorPickerSelectColor();
             }
+        });
+        buttonRectangle = findViewById(R.id.buttonRectangle);
+        buttonRectangle.setOnClickListener(v -> {
+            simplePaint.setDrawMode(SimplePaint.DrawMode.RECTANGLE);
+        });
+
+        buttonCircle = findViewById(R.id.buttonCircle);
+        buttonCircle.setOnClickListener(v -> {
+            simplePaint.setDrawMode(SimplePaint.DrawMode.CIRCLE);
+        });
+        buttonLine = findViewById(R.id.buttonLine);
+        buttonLine.setOnClickListener(v -> {
+            simplePaint.setDrawMode(SimplePaint.DrawMode.LINE);
         });
     }
 
