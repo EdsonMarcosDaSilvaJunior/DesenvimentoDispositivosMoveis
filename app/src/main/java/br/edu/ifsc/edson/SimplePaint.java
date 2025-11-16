@@ -76,6 +76,24 @@ public class SimplePaint extends View {
         this.currentMode = mode;
     }
 
+    public void undoLastAction(){
+        if(!mPathList.isEmpty()){
+            mPathList.remove(mPathList.size() - 1);
+            mPaintList.remove(mPaintList.size() -1);
+            currentPath.reset();
+
+            invalidate();
+        }
+    }
+
+    public void clearCanvas(){
+        mPathList.clear();
+        mPaintList.clear();
+        currentPath.reset();
+
+        invalidate();
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float ly, lx;

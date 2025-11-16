@@ -41,7 +41,7 @@
         android:id="@+id/buttonRectangle"
         android:layout_width="62dp"
         android:layout_height="61dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="44dp"
         android:layout_marginBottom="6dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"
@@ -53,10 +53,40 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
+        android:id="@+id/buttonUndo"
+        android:layout_width="62dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
+        app:icon="@drawable/back_arrow"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/simplePaint"
+        app:layout_constraintEnd_toStartOf="@+id/ivColorPicker"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="62dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="6dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
+        app:icon="@drawable/icons8_clear_50"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/simplePaint"
+        app:layout_constraintEnd_toStartOf="@+id/ivColorPicker"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
         android:id="@+id/buttonCircle"
         android:layout_width="62dp"
         android:layout_height="61dp"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="108dp"
         android:layout_marginBottom="6dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"
@@ -71,7 +101,7 @@
         android:id="@+id/buttonLine"
         android:layout_width="62dp"
         android:layout_height="61dp"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="172dp"
         android:layout_marginBottom="6dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"

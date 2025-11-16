@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     SimplePaint simplePaint;
     ImageView ivColorPicker;
-    Button buttonRectangle, buttonCircle, buttonLine;
+    Button buttonRectangle, buttonCircle, buttonLine, buttonUndo, buttonClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         buttonLine.setOnClickListener(v -> {
             simplePaint.setDrawMode(SimplePaint.DrawMode.LINE);
         });
+
+        buttonUndo = findViewById(R.id.buttonUndo);
+        buttonUndo.setOnClickListener(v -> simplePaint.undoLastAction());
+
+        buttonClear = findViewById(R.id.buttonClear);
+        buttonClear.setOnClickListener(v -> simplePaint.clearCanvas());
     }
 
     public void colorPickerSelectColor(){
